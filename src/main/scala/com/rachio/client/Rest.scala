@@ -1,32 +1,26 @@
-package com.rachio.client
+package com.rachio.scala.client
 
 import scalaz._
 import Scalaz._
 import scalaz.concurrent.Task
-import play.api.libs.ws.ahc.AhcWSClient
+import akka.io.IO
+import akka.pattern.ask
+import spray.can.Http
+import spray.http._
+import spray.client.pipelining._
 
 private object ClientStuffs {
-  type RClient = AhcWSClient
   val version = "1"
 }
 
-trait Zone {
-  import ClientStuffs.RClient  
+case class Zone {
 }
 
-trait Schedule {
-  import ClientStuffs.RClient  
-  
-}
+case class Device {
 
-trait Device {
-  import ClientStuffs.RClient  
-  
 }
 
 class Driver {
   import ClientStuffs._
   val base = s"https://api.rach.io/${version}/public"
-  implicit val client = AhcWSClient()
-  client.
 }
