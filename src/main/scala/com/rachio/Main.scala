@@ -1,7 +1,6 @@
 import akka.actor.ActorSystem
-import com.rachio.scala.client.Driver
+import com.rachio.scala.client.{Driver, ActorBase}
 
-object Main extends App with Driver {
-  implicit val system = ActorSystem("rachio-client")
+object Main extends App with ActorBase with Driver {
 
 }
