@@ -52,12 +52,13 @@ trait Driver {
     case f:HttpResponse=>
       import RachioJsonProtocol._
       import SprayJsonSupport._
-      println(f)
       val thebiz = unmarshal[PersonId]
       val person = send(Get(s"$base/person/${thebiz(f).id}"))
       person.onSuccess {
         case x:HttpResponse =>
-          val otherbiz = unmarshal[Device]
+          val ohsnap=new String(x.entity.data.toByteArray,"UTF-8")
+          println(ohsnap)
+          val otherbiz = unmarshal[Person]
           println(otherbiz(x))
       }
 
